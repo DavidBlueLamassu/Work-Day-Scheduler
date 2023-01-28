@@ -3,12 +3,15 @@ var todaysDate = moment();
 var scheduleArray = [[], [], [], [], [], [], [], [], []];
 var storedSchedule = JSON.parse(localStorage.getItem("timetable"));
 var timetable = $("#timetable");
+var saveTime = 0;
 
 scheduleArray = storedSchedule;
 
 console.log(scheduleArray);
 
 currentDay.text(todaysDate.format("dddd, D MMMM"));
+
+$("#alertMessage").css("height", "20px");
 
 function textRestore() {
     for(var i = 0; i < scheduleArray.length; i++) {
@@ -20,68 +23,112 @@ function textRestore() {
 textRestore()
 
 $("#save-1").on("click", function() {
-    console.log("Switch clicked!");
-    var textSave = $("#text-1").val();
-    console.log(textSave);
-    scheduleArray[0] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            console.log("Switch clicked!");
+            var textSave = $("#text-1").val();
+            console.log(textSave);
+            scheduleArray[0] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-2").on("click", function() {
-    console.log("Switch clicked!");
-    var textSave = $("#text-2").val();
-    console.log(textSave);
-    scheduleArray[1] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            console.log("Switch clicked!");
+            var textSave = $("#text-2").val();
+            console.log(textSave);
+            scheduleArray[1] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-3").on("click", function() {
-    var textSave = $("#text-3").val();
-    scheduleArray[2] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-3").val();
+            scheduleArray[2] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-4").on("click", function() {
-    var textSave = $("#text-4").val();
-    scheduleArray[3] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-4").val();
+            scheduleArray[3] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-5").on("click", function() {
-    var textSave = $("#text-5").val();
-    scheduleArray[4] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-5").val();
+            scheduleArray[4] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-6").on("click", function() {
-    var textSave = $("#text-6").val();
-    scheduleArray[5] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-6").val();
+            scheduleArray[5] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-7").on("click", function() {
-    var textSave = $("#text-7").val();
-    scheduleArray[6] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-7").val();
+            scheduleArray[6] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }   
     }
 )
 
 $("#save-8").on("click", function() {
-    var textSave = $("#text-8").val();
-    scheduleArray[7] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-8").val();
+            scheduleArray[7] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
 
 $("#save-9").on("click", function() {
-    var textSave = $("#text-9").val();
-    scheduleArray[8] = textSave;
-    localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+        if (saveTime === 0) {
+            var textSave = $("#text-9").val();
+            scheduleArray[8] = textSave;
+            localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
+            savingAlert();
+        }
     }
 )
+
+function savingAlert() {
+    saveTime = 2;
+    //var alertMessage = $('<p>');
+    $("#alertMessage").text("Appointment added to local Storage! ✔️");
+    $("#alertMessage").css({"display": "flex", "color": "white", "justify-content": "center"});
+    //$("#body").css("background-color", "green");
+    var saveAlert = setInterval(function() {
+        saveTime--;
+        if (saveTime === 0) {
+            clearInterval(saveAlert);
+            $("#alertMessage").text("");
+            $("#body").css("background-color", "rgb(20, 82, 237)");
+        }
+
+    }, 1000);
+}
