@@ -27,15 +27,20 @@
   </head>
 
   <body>
+    <!--Jumbotron with introductory/title text.-->
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
+      <!--The "currentDay" id provides a site for a querySelector to set the day's date from moment.js-->
       <p id="currentDay" class="lead"></p>
     </header>
+    <!--The "alertMessage" id element holds text to indicate data is being saved in localStorage for 2 seconds
+    when a saved button has been clicked.-->
     <p id="alertMessage"></p>
+    <!--The container holds the daily planner.-->
     <div class="container">
-      <!-- Timeblocks go here -->
-      
+      <!--The "time" section forms the first column in the daily planner. This labels the nine hourly working-day 
+        time-slots from 9AM to 5PM-->
       <section id="time">
         <div>
           <p>9AM</p>
@@ -65,6 +70,12 @@
           <p>5PM</p>
         </div>
       </section>
+      <!--This section forms the core of the daily planner. It consists of a column of nine text areas 
+      corresponding to each hour of the working day. Here events can be typed and stored. The contents 
+      of these boxes can be held in localStorage and retained when the page is refreshed. Each textbox is
+      color-coded to indicate whether their contents relate to that past (grey), the present hour (red), 
+      the future (green). The "text-1" to "text-9" id's are reference points for code in JavaScript which
+      repopulates each textarea with saved text.-->
       <section id="timetable">
         <div>
           <textarea id="text-1"></textarea>
@@ -94,6 +105,11 @@
           <textarea id="text-9"></textarea>
         </div>
       </section>
+      <!--Each of the nine boxes in the right-hand column of the daily planner present the user with a save button
+      corresponding to each of the textareas of the previous section. Clickng inside the box saved the text in the
+      adjacent area to localStorage. The function of the save boxes is indicated by the floppy disk/save icon in the
+      center of each div; this increases in size upon hover. The "save" and "save-1" to "save-9" id's are reference 
+      points for formatting in CSS and for eventListeners in JavaScript.-->
       <section id="save">
         <div id="save-1">💾</div>
         <div id="save-2">💾</div>
