@@ -4,6 +4,7 @@ var scheduleArray = [[], [], [], [], [], [], [], [], []];
 var storedSchedule = JSON.parse(localStorage.getItem("timetable"));
 var timetable = $("#timetable");
 var saveTime = 0;
+var colorArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 scheduleArray = storedSchedule;
 
@@ -15,12 +16,28 @@ $("#alertMessage").css("height", "20px");
 
 function textRestore() {
     for(var i = 0; i < scheduleArray.length; i++) {
-        var timetableRestore = timetable.children().eq(i).children().eq(0);
-        timetableRestore.text(scheduleArray[i]);
+        var timeTableRestore = timetable.children().eq(i).children().eq(0);
+        timeTableRestore.text(scheduleArray[i]);
     }
 }
 
-textRestore()
+function colorSet() {
+    for(var i = 0; i < colorArray.length; i++) {
+        var colorTableSet = colorArray[i];
+        var color;
+        var colorChanger = timetable.children().eq(i).children().eq(0);
+        if (colorTableSet > 14) {
+            color = "#77dd77"
+        } else if (colorTableSet === 14) {
+            color = "#ff6961"
+        }
+        colorChanger.css("background-color", color);
+    }
+
+}
+
+textRestore();
+colorSet();
 
 $("#save-1").on("click", function() {
         if (saveTime === 0) {
@@ -119,7 +136,7 @@ $("#save-9").on("click", function() {
 function savingAlert() {
     saveTime = 2;
     //var alertMessage = $('<p>');
-    $("#alertMessage").text("Appointment added to local Storage! ✔️");
+    $("#alertMessage").text("Appointment added to localStorage! ✔️");
     $("#alertMessage").css({"display": "flex", "color": "white", "justify-content": "center"});
     //$("#body").css("background-color", "green");
     var saveAlert = setInterval(function() {
