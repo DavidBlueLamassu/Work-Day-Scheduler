@@ -12,6 +12,12 @@ console.log(scheduleArray);
 
 currentDay.text(todaysDate.format("dddd, D MMMM"));
 
+var hour = todaysDate.format("H");
+var hourNumbered = parseInt(hour);
+
+console.log("Hour:" + hour);
+console.log(todaysDate);
+
 $("#alertMessage").css("height", "20px");
 
 function textRestore() {
@@ -26,10 +32,12 @@ function colorSet() {
         var colorTableSet = colorArray[i];
         var color;
         var colorChanger = timetable.children().eq(i).children().eq(0);
-        if (colorTableSet > 14) {
-            color = "#77dd77"
-        } else if (colorTableSet === 14) {
-            color = "#ff6961"
+        if (colorTableSet > hourNumbered) {
+            color = "#77dd77";
+        } else if (colorTableSet === hourNumbered) {
+            color = "#ff6961";
+        } else if (colorTableSet < hourNumbered) {
+         color = "#d3d3d3";
         }
         colorChanger.css("background-color", color);
     }
