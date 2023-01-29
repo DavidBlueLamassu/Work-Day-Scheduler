@@ -5,30 +5,25 @@ var storedSchedule = JSON.parse(localStorage.getItem("timetable"));
 var timetable = $("#timetable");
 var saveTime = 0;
 var colorArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-
-scheduleArray = storedSchedule;
-
-console.log(scheduleArray);
-
-currentDay.text(todaysDate.format("dddd, D MMMM"));
-
 var hour = todaysDate.format("H");
 var hourNumbered = parseInt(hour);
 
-console.log("Hour:" + hour);
-console.log(todaysDate);
+scheduleArray = storedSchedule;
+
+currentDay.text(todaysDate.format("dddd, D MMMM"));
 
 $("#alertMessage").css("height", "20px");
 
 function textRestore() {
-    for(var i = 0; i < scheduleArray.length; i++) {
+    $.each(scheduleArray, function(i) {
         var timeTableRestore = timetable.children().eq(i).children().eq(0);
         timeTableRestore.text(scheduleArray[i]);
-    }
+        }
+    )
 }
 
 function colorSet() {
-    for(var i = 0; i < colorArray.length; i++) {
+    $.each(colorArray, function(i) {
         var colorTableSet = colorArray[i];
         var color;
         var colorChanger = timetable.children().eq(i).children().eq(0);
@@ -40,7 +35,8 @@ function colorSet() {
          color = "#d3d3d3";
         }
         colorChanger.css("background-color", color);
-    }
+        }
+    )
 
 }
 
@@ -49,9 +45,7 @@ colorSet();
 
 $("#save-1").on("click", function() {
         if (saveTime === 0) {
-            console.log("Switch clicked!");
             var textSave = $("#text-1").val();
-            console.log(textSave);
             scheduleArray[0] = textSave;
             localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
             savingAlert();
@@ -61,9 +55,7 @@ $("#save-1").on("click", function() {
 
 $("#save-2").on("click", function() {
         if (saveTime === 0) {
-            console.log("Switch clicked!");
             var textSave = $("#text-2").val();
-            console.log(textSave);
             scheduleArray[1] = textSave;
             localStorage.setItem("timetable", (JSON.stringify(scheduleArray)));
             savingAlert();
@@ -143,17 +135,14 @@ $("#save-9").on("click", function() {
 
 function savingAlert() {
     saveTime = 2;
-    //var alertMessage = $('<p>');
     $("#alertMessage").text("Appointment added to localStorage! ✔️");
     $("#alertMessage").css({"display": "flex", "color": "white", "justify-content": "center"});
-    //$("#body").css("background-color", "green");
-    var saveAlert = setInterval(function() {
+   var saveAlert = setInterval(function() {
         saveTime--;
         if (saveTime === 0) {
             clearInterval(saveAlert);
             $("#alertMessage").text("");
             $("#body").css("background-color", "rgb(20, 82, 237)");
         }
-
     }, 1000);
 }
