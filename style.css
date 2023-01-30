@@ -4,50 +4,71 @@
     margin: 0;
 }
 
+/*Sets font for webpage and background-color. */
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1;
   background-color: rgb(20, 82, 237);
 }
 
+/*Formatting for the opening section of the webpage. This is divided from
+the rest of the document with a thick solid black line.*/
 .jumbotron {
   text-align: center;
   background-color: white;
   color: black;
-  border-radius: 0;
   border-bottom: 10px solid black;
 }
 
+/*General formatting for the daily planner as a whole. The different columns of
+the planner are brought alongside each other in a flexbox forming rows and centered.*/
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*Formatting for the left-hand column of the daily planner. Width is set to 10%.
+This portion of the planner labels the time of day.*/
 #time {
-  background-color: whitesmoke;
   width: 10%;
 }
 
+/*Formatting for each of the nine cells (divs) within the left-hand column
+of the daily planner. The border-top for each is a dotted line. Padding
+places the hour label near to the center of each cell. The left-hand corners 
+are curved using the border-radius property. All the cells across each row 
+of the scheduler are set to a uniform height of 100px.*/
 #time div {
   border-top: 1px dotted black;
   padding: 10px;
   height: 100px;
   padding-top: 40px;
   padding-left: 30px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: whitesmoke;
 }
 
+/*Width set for the central column of the daily planner. This holds the textareas
+for recording events and is, accordingly, the widest portion of the planner.*/
 #timetable {
-  background-color: #d3d3d3;
   width: 75%;
 }
 
+/*Formatting for each of the cells within the central column. All the cells  
+across each row of the scheduler are set to a uniform height of 100px.*/
 #timetable div {
   border: 1px solid white;
   height: 100px;
   border-left: 1px solid black;
 }
 
+/*Formatting for each of the textareas within the cells of the central column. Each
+textarea is set to a width of 100% in order to fill the entire box. 'resize' is set to 
+'none' to prevent the size of the textareas from being accidentally changed by the user
+and to give a smoother more uniform appearance to the textboxes.*/
 textarea {
-  background-color: #d3d3d3;
-  border: none;
   resize: none;
-  color: #000000;
   border-left: 1px solid black;
   border-bottom: 2px solid white;
   padding: 10px;
@@ -55,13 +76,19 @@ textarea {
   width: 100%;
 }
 
+/*Formatting for the right-hand column of the daily planner where the save buttons are
+contained. Width is set to 10%.*/
 #save {
   width: 10%;
 }
 
+/*Formatting for each of the cells in the right-hand (save) column of the daily planner.
+Each of these is a flexbox so that the floppy disk/save icon can be centered using 'justify-
+content' and 'align-items'. The right-hand corners are curved using the border-radius property.
+The cursor becomes a pointer over the box to indicate the box is clickable. All the cells  
+across each row of the scheduler are set to a uniform height of 100px.*/
 #save div {
   border: 1px solid white;
-  padding: 10px;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -73,14 +100,10 @@ textarea {
   background-color: #06aed5;
 }
 
+/*The content of the 'save' boxes expands to 30px upon hover. This emphasizes the save function 
+represented by the floppy disk/save icon*/
 #save div:hover{
   font-size: 30px;
   transition: all 0.3s ease-in-out;
 }
 
-.container {
-  display: flex;
-  margin: auto;
-  flex-direction: row;
-  justify-content: center;
-}

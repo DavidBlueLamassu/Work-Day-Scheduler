@@ -73,9 +73,10 @@
       <!--This section forms the core of the daily planner. It consists of a column of nine text areas 
       corresponding to each hour of the working day. Here events can be typed and stored. The contents 
       of these boxes can be held in localStorage and retained when the page is refreshed. Each textbox is
-      color-coded to indicate whether their contents relate to that past (grey), the present hour (red), 
+      color-coded to indicate whether its contents relate to the past (grey), the present hour (red), or
       the future (green). The "text-1" to "text-9" id's are reference points for code in JavaScript which
-      repopulates each textarea with saved text.-->
+      saves the value of each textarea to localStorage whenever an adjacent save button is clicked 
+      (see below).-->
       <section id="timetable">
         <div>
           <textarea id="text-1"></textarea>
