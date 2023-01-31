@@ -7,7 +7,7 @@ The purpose of this project was to create a useful day scheduler where upcoming 
 N/A
 
 ## Usage
-Text may be entered into any of the colored areas within the central column. The colors represent: the past (grey), the present (red) and the future (green). Clicking a blue buttons in the right-hand column will save any information typed into the 'textarea' to its left to 'localStorage'. This information can be retrieved upon refresh or reloading of the page.
+Text may be entered into any of the colored areas within the central column. The colors represent: the past (grey), the present (red) and the future (green). Clicking a blue button in the right-hand column will save any information typed into the 'textarea' to its left to 'localStorage'. This information can be retrieved upon refresh or reloading of the page.
 
 ## Credits
 N/A
