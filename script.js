@@ -1,30 +1,31 @@
-//'querySelector' for the element which will display the date of the current day.'
+//'querySelector' for the element which will display the date of the current day.
 var currentDay = $("#currentDay");
 
 //The current date and time as provided by moment.js.
 var todaysDate = moment();
 
-//An empty array with nine empty arrays inside (each empty array corresponds to the 
-//nine textareas for each hour of the working day in the daily planner). This array of 
-//arrays holds events saved in the daily scheduler and provides a template for saving 
-//these using localStorage. 
+//An array with nine empty arrays inside (each empty array corresponds to the 
+//nine textareas for each hour of the working day in the day scheduler). This array of 
+//arrays holds events saved in the day scheduler and copies of this array are saved 
+//using 'localStorage'. 
 var scheduleArray = [[], [], [], [], [], [], [], [], []];
 
-//A variable to retrieve saved versions of the scheduleArray held in localStorage.
+//A variable to retrieve saved versions of the 'scheduleArray' held in 'localStorage'.
 var storedSchedule = JSON.parse(localStorage.getItem("timetable"));
 
-//querySelector for the timetable section of the daily scheduler. This holds nine
-//textareas for storing events.
+//'querySelector' for the timetable section of the day scheduler. This holds nine
+//'textarea' elements for typing and storing events. This will serve as a reference point when 
+//the textareas are populated with stored information.
 var timetable = $("#timetable");
 
-//Variable to hold time for the setInterval() method which allows a brief (2 second)
-//display to indicate that the contents of a text area have been saved to 'localStorage'.
+//Variable to hold time for the setInterval() method which allows a brief (2-second)
+//display to indicate that the contents of a 'textarea' have been saved to 'localStorage'.
 var saveTime = 0;
 
-//This array is used to color-code the different text areas based upon whether they 
+//This array is used to color-code the different textareas based upon whether they 
 //represent the present, past or future. Each number represents the time of day 
 //according to a 24-hour clock and corresponds to each of the nine textareas of the 
-//daily scheduler.
+//day scheduler.
 var colorArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 //A variable to indicate the present hour on a 24-hour clock. This is used to determine
@@ -36,7 +37,7 @@ var hour = todaysDate.format("H");
 var hourNumbered = parseInt(hour);
 
 //This introduces the values held in localStorage (if any) into the 'scheduleArray'. 
-//Ths scheduleArray will next be used to repopulate the textareas with any stored
+//The 'scheduleArray' will next be used to populate the textareas with any stored
 //information.
 scheduleArray = storedSchedule;
 
@@ -56,12 +57,13 @@ function textRestore() {
         
         //A variable to allow the 'for' loop to introduce text into each of the 
         //textareas within the day scheduler. Each 'textarea' element is held 
-        //within a 'div' (for ease of formatting in CSS). Accordingly, the nine
-        //'div' children for the "#timetable" element, are used by the 'for' loop
-        //to populate each of their 'textarea' children.
+        //within a 'div' (for ease of formatting in CSS). Accordingly, the loop 
+        //iterates through the nine 'div' children of the "#timetable" element, 
+        //and these serve as reference points to populate each of their 'textarea' 
+        //children.
         var timeTableRestore = timetable.children().eq(i).children().eq(0);
         
-        //Each text area is populated with text from 'scheduleArray'.
+        //Each 'textarea' is populated with text from 'scheduleArray'.
         timeTableRestore.text(scheduleArray[i]);
         }
     )
@@ -74,19 +76,20 @@ function colorSet() {
     $.each(colorArray, function(i) {
         
         //This variable holds different color values depending upon the value of the 
-        //numbers stored within the coloArray, each number corresponding to the time 
+        //numbers stored within the coloArray, each number corresponds to the time 
         //of day represented by the textareas.
         var color;
 
         //A variable to allow the 'for' loop to reformat the color of each of the 
         //textareas within the day scheduler. Each 'textarea' element is held 
-        //within a 'div' (for ease of formatting in CSS). Accordingly, the nine
-        //'div' children for the "#timetable" element, are used by the 'for' loop
-        //to populate each of their 'textarea' children.
+        //within a 'div' (for ease of formatting in CSS). Accordingly, the loop 
+        //iterates through the nine 'div' children of the "#timetable" element, 
+        //and these serve as reference points to format each of their 'textarea' 
+        //children.
         var colorChanger = timetable.children().eq(i).children().eq(0);
         
-        //Conditions to detemine whether color will hold values for red, present; 
-        //grey, past; or green, future.
+        //Conditions to determine whether 'color' will hold values for 'red', present; 
+        //'grey', past; or 'green', future.
         if (colorArray[i] > hourNumbered) {
             color = "#77dd77";
         } else if (colorArray[i] === hourNumbered) {
@@ -95,7 +98,7 @@ function colorSet() {
          color = "#d3d3d3";
         }
 
-        //The background-color for each textarea is reformatted according to the 
+        //The 'background-color' for each 'textarea' is reformatted according to the 
         //value held by the 'color' variable.
         colorChanger.css("background-color", color);
         }
@@ -108,9 +111,9 @@ textRestore();
 colorSet();
 
 //Event listeners are set up for each of the nine textareas representing the hours
-//of the working day. When one of the '#save' elements to the left of the textareas is
+//of the working day. When one of the '#save' elements to the right of the textareas is
 //clicked the content of the 'textarea' immediately to its left will be copied to the 
-//appropriate array within 'scheduleArray' and the update version of 'scheduleArray' 
+//appropriate array within 'scheduleArray' and the updated version of 'scheduleArray' 
 //will be saved to 'localStorage'.
 $("#save-1").on("click", function() {
     
@@ -127,7 +130,7 @@ $("#save-1").on("click", function() {
             var textSave = $("#text-1").val();
             
             //Index 0 of the 'scheduleArray' is made to equal to the value of 'textSave':
-            //the current text held in the 'textarea' "#text-1".
+            //this is the current text held in the 'textarea' "#text-1".
             scheduleArray[0] = textSave;
             
             //The updated version of 'scheduleArray' is copied to 'localStorage'.
@@ -141,7 +144,7 @@ $("#save-1").on("click", function() {
 )
 
 //The following eight event listeners are identical to the first, except that they save 
-//information for each corresponding 'textarea' to each of the ensuing arrays within the
+//information for each corresponding 'textarea' to each of the ensuing arrays within
 //'scheduleArray'.
 $("#save-2").on("click", function() {
     
@@ -233,7 +236,7 @@ function savingAlert() {
     saveTime = 2;
 
     //Alert message content and formatting to be displayed on the "#alertMessage" element. The check mark
-    //emoji was copies from 'Emojis.Wiki' ("Check Mark", Emojis.Wiki -- Emoji Meanings Encyclopedia, 
+    //emoji was copied from 'Emojis.Wiki' ("Check Mark", Emojis.Wiki -- Emoji Meanings Encyclopedia, 
     //last visited 30 January 2023: https://emojis.wiki/floppy-disk/).
     $("#alertMessage").text("Appointment added to localStorage! ✔️");
     $("#alertMessage").css({"display": "flex", "color": "white", "justify-content": "center"});
