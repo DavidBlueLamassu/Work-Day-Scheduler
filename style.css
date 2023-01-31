@@ -19,15 +19,15 @@ the rest of the document with a thick solid black line.*/
   border-bottom: 10px solid black;
 }
 
-/*General formatting for the daily planner as a whole. The different columns of
-the planner are brought alongside each other in a flexbox forming rows and centered.*/
+/*General formatting for the day scheduler table. The different columns of
+the table are brought alongside each other in a flexbox, forming rows, and centered.*/
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-/*Formatting for the left-hand column of the daily planner. Width is set to 10%.
+/*Formatting for the left-hand column of the day scheduler. Width is set to 10%.
 This portion of the planner labels the time of day.*/
 #time {
   width: 10%;
@@ -49,7 +49,7 @@ of the scheduler are set to a uniform height of 100px.*/
   background-color: whitesmoke;
 }
 
-/*Width set for the central column of the daily planner. This holds the textareas
+/*Width set for the central column of the day scheduler. This holds the textareas
 for recording events and is, accordingly, the widest portion of the planner.*/
 #timetable {
   width: 75%;
@@ -64,7 +64,7 @@ across each row of the scheduler are set to a uniform height of 100px.*/
 }
 
 /*Formatting for each of the textareas within the cells of the central column. Each
-textarea is set to a width of 100% in order to fill the entire box. 'resize' is set to 
+'textarea' is set to a width of 100% in order to fill the entire box. 'resize' is set to 
 'none' to prevent the size of the textareas from being accidentally changed by the user
 and to give a smoother more uniform appearance to the textboxes.*/
 textarea {
@@ -76,7 +76,7 @@ textarea {
   width: 100%;
 }
 
-/*Formatting for the right-hand column of the daily planner where the save buttons are
+/*Formatting for the right-hand column of the day scheduler where the save buttons are
 contained. Width is set to 10%.*/
 #save {
   width: 10%;
