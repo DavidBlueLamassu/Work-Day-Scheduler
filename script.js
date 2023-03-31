@@ -39,7 +39,10 @@ var hourNumbered = parseInt(hour);
 //This introduces the values held in localStorage (if any) into the 'scheduleArray'. 
 //The 'scheduleArray' will next be used to populate the textareas with any stored
 //information.
-scheduleArray = storedSchedule;
+
+if (storedSchedule !== null) {
+    scheduleArray = storedSchedule;
+}
 
 //This displays the current date (in the format Day of the week, date, month) using the
 //"#currentDay" element.
