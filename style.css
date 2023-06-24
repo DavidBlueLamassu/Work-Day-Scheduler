@@ -19,6 +19,10 @@ the rest of the document with a thick solid black line.*/
   border-bottom: 10px solid black;
 }
 
+.jumbotron h1 {
+  font-size: 72px;
+}
+
 /*General formatting for the day scheduler table. The different columns of
 the table are brought alongside each other in a flexbox, forming rows, and centered.*/
 .container {
@@ -105,5 +109,43 @@ represented by the floppy disk/save icon*/
 #save div:hover{
   font-size: 30px;
   transition: all 0.3s ease-in-out;
+}
+
+/* Media queries to ensure that the time display is still fully visible in smaller formats. */
+
+@media only screen and (max-width: 1000px) {
+  
+  #time div {
+    padding-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  
+  #time {
+    width: 15%;
+  }
+  
+  #time div {
+    padding-left: 5px;
+  }
+}
+
+/* Media query to reduce the size of the h1 title font on the smallest formats to ensure it fits within the 
+screen; also further revisions to ensure time of day display is readable. */
+
+@media only screen and (max-width: 350px) {
+  
+  .jumbotron h1 {
+    font-size: 50px;
+  }
+  
+  #time div {
+    padding-left: 2px;
+  }
+  
+  #time p {
+    font-size: 14px;
+  }
 }
 
